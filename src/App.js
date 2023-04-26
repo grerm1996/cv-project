@@ -1,25 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import General from './components/general';
+import Education from './components/education';
+import Experience from './components/experience';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      submitted: false,
+
+    }
+
+    this.toggleSubmitted = this.toggleSubmitted.bind(this);
+
 }
+
+
+toggleSubmitted() {
+  this.setState({ submitted: !this.state.submitted });
+  console.log(this.state.submitted)
+}
+
+render() {
+  return (
+      <div className="App">
+        < General submitted={this.state.submitted}/>
+        {/* < Education />
+        < Experience /> */}
+        <button onClick={this.toggleSubmitted}>
+          {this.state.submitted ? 'Undo submit' : 'True submit'}
+        </button>
+      </div>
+    );
+  }
+};
 
 export default App;
