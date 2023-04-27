@@ -9,6 +9,7 @@ class General extends Component {
             name: '',
             email: '',
             phone: '',
+            editing: false,
         }
     };
 
@@ -32,45 +33,32 @@ class General extends Component {
 
     render() {
 
-        if (this.props.submitted == false) {
+        if (this.props.submitted == false || this.state.editing == true) {
 
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                Name:
-                <input name='name' type="text" value={this.state.name} onChange={this.handleChange} />
-                </label>
+            <form>
+                <fieldset>
+                    <legend>General</legend>
+                    <input name='name' placeholder='Name' type="text" value={this.state.name} onChange={this.handleChange} />
 
-                <label>
-                E-mail:
-                <input name='email' type="text" value={this.state.email} onChange={this.handleChange} />
-                </label>
+                    <input name='email' placeholder='E-mail address' type="text" value={this.state.email} onChange={this.handleChange} />
 
-                <label>
-                Phone number:
-                <input name='phone' type="text" value={this.state.phone} onChange={this.handleChange} />
-                </label>
-
-
-                <input type="submit" value="Submit" />
+                    <input name='phone' placeholder='Phone number' type="text" value={this.state.phone} onChange={this.handleChange} />
+                </fieldset>
             </form>
 
         )}
 
-        if (this.props.submitted == true) {
+        if (this.props.submitted == true && this.state.editing == false) {
             return (
                 <div className='section'>
-                    <p>{this.state.name}</p>
+                    <h2>{this.state.name}</h2>
                     <p>{this.state.email}</p>
                     <p>{this.state.phone}</p>
-
                 </div>
-
             )
         }
     }
-
-
 
 }
 

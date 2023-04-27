@@ -29,10 +29,13 @@ render() {
   return (
       <div className="App">
         < General submitted={this.state.submitted}/>
-        {/* < Education />
-        < Experience /> */}
+
+        < Education submitted={this.state.submitted}/>
+
+        < Experience submitted={this.state.submitted}/>
+
         <button onClick={this.toggleSubmitted}>
-          {this.state.submitted ? 'Undo submit' : 'True submit'}
+          {this.state.submitted ? 'Edit' : 'Submit'}
         </button>
       </div>
     );

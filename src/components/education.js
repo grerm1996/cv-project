@@ -31,28 +31,38 @@ class Education extends Component {
 
     render() {
 
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                School name: 
-                <input name='school' type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
+        if (this.props.submitted == false) {
 
-                <label>
-                Degree earned: 
-                <input name='degree' type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
+            return (
+                <form>
+                    <fieldset>
+                    <legend>Education</legend>
+                        <input name='school' placeholder='School name' type="text" value={this.state.value} onChange={this.handleChange} />
 
-                <label>
-                Graduation date: 
-                <input name='date' type="date" value={this.state.value} onChange={this.handleChange} />
-                </label>
+                        <input name='degree' placeholder='Degree earned' type="text" value={this.state.value} onChange={this.handleChange} />
 
+                        <div className='datecontainer'>
+                        <label>
+                        Date of degree completion: 
+                        <input name='date' placeholder='Date of degree completion' type="date" value={this.state.value} onChange={this.handleChange} />
+                        </label>
+                        </div>
+                    </fieldset>
+                </form>
 
-                <input type="submit" value="Submit" />
-            </form>
+            )
+        }
 
-        )
+        if (this.props.submitted == true) {
+            return (
+            <div className='section'>
+                <h3>Education</h3>
+                    <p>{this.state.degree}</p>
+                    <p>{this.state.school}</p>
+                    <p>Completed {this.state.date}</p>
+                </div>
+            )    
+    }
     }
 
 

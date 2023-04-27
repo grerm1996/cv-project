@@ -34,39 +34,47 @@ class Experience extends Component {
 
 
     render() {
+        if (this.props.submitted == false) {
+            return (
+                <form>
+                    <fieldset>
+                    <legend>Experience</legend>
+                        <input name='employer' placeholder='Employer name' type="text" value={this.state.value} onChange={this.handleChange} />
 
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                Employer: 
-                <input name='employer' type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
+                        <input name='position' placeholder='Position held' type="text" value={this.state.value} onChange={this.handleChange} />
 
-                <label>
-                Position held: 
-                <input name='position' type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
+                        <input name='duties' placeholder='Position responsibilities' type="text" value={this.state.value} onChange={this.handleChange} />
 
-                <label>
-                Position responsibilities: 
-                <input name='duties' type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
+                        <div className='datecontainer'>
+                        <label>
+                        Employment start: 
+                        <input name='startdate' type="date" value={this.state.value} onChange={this.handleChange} />
+                        </label>
 
-                <label>
-                Employment start: 
-                <input name='startdate' type="date" value={this.state.value} onChange={this.handleChange} />
-                </label>
+                        <label>
+                        Employment end: 
+                        <input name='enddate' type="date" value={this.state.value} onChange={this.handleChange} />
+                        </label>
+                        </div>
+                    </fieldset>
+                </form>
 
-                <label>
-                Employment end: 
-                <input name='enddate' type="date" value={this.state.value} onChange={this.handleChange} />
-                </label>
+            )
+        }
 
+        if (this.props.submitted == true) {
+            return (
+            <div className='section'>
+                <h3>Work Experience</h3>
+                    <p>{this.state.employer}</p>
+                    <p>{this.state.position}</p>
+                    <p>{this.state.duties}</p>
+                    <p>{this.state.startdate}</p>
+                    <p>{this.state.enddate}</p>
 
-                <input type="submit" value="Submit" />
-            </form>
-
-        )
+                </div>
+            )    
+    }
     }
 
 
