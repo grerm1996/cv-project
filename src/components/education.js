@@ -19,14 +19,6 @@ class Education extends Component {
         });
     };
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('school: ' + this.state.school);
-        console.log('degree: ' + this.state.degree);
-        console.log('date: ' + this.state.date);
-    };
-
-
 
 
     render() {
@@ -37,14 +29,14 @@ class Education extends Component {
                 <form>
                     <fieldset>
                     <legend>Education</legend>
-                        <input name='school' placeholder='School name' type="text" value={this.state.value} onChange={this.handleChange} />
+                        <input name='school' placeholder='School name' type="text" value={this.state.school} onChange={this.handleChange} />
 
-                        <input name='degree' placeholder='Degree earned' type="text" value={this.state.value} onChange={this.handleChange} />
+                        <input name='degree' placeholder='Degree earned' type="text" value={this.state.degree} onChange={this.handleChange} />
 
                         <div className='datecontainer'>
                         <label>
                         Date of degree completion: 
-                        <input name='date' placeholder='Date of degree completion' type="date" value={this.state.value} onChange={this.handleChange} />
+                        <input name='date' placeholder='Date of degree completion' type="date" value={this.state.date} onChange={this.handleChange} />
                         </label>
                         </div>
                     </fieldset>

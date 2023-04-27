@@ -16,20 +16,11 @@ class Experience extends Component {
 
     handleChange = (e) => {
         let category = e.target.name;
+        console.log(category)
         this.setState({
             [category]: e.target.value,
         });
     };
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('employer: ' + this.state.employer);
-        console.log('position: ' + this.state.position);
-        console.log('duties: ' + this.state.duties);
-        console.log('start: ' + this.state.startdate);
-        console.log('end: ' + this.state.enddate);
-    };
-
 
 
 
@@ -39,21 +30,21 @@ class Experience extends Component {
                 <form>
                     <fieldset>
                     <legend>Experience</legend>
-                        <input name='employer' placeholder='Employer name' type="text" value={this.state.value} onChange={this.handleChange} />
+                        <input name='employer' placeholder='Employer name' type="text" value={this.state.employer} onChange={this.handleChange} />
 
-                        <input name='position' placeholder='Position held' type="text" value={this.state.value} onChange={this.handleChange} />
+                        <input name='position' placeholder='Position held' type="text" value={this.state.position} onChange={this.handleChange} />
 
-                        <input name='duties' placeholder='Position responsibilities' type="text" value={this.state.value} onChange={this.handleChange} />
+                        <input name='duties' placeholder='Position responsibilities' type="text" value={this.state.duties} onChange={this.handleChange} />
 
                         <div className='datecontainer'>
                         <label>
                         Employment start: 
-                        <input name='startdate' type="date" value={this.state.value} onChange={this.handleChange} />
+                        <input name='startdate' type="date" value={this.state.startdate} onChange={this.handleChange} />
                         </label>
 
                         <label>
                         Employment end: 
-                        <input name='enddate' type="date" value={this.state.value} onChange={this.handleChange} />
+                        <input name='enddate' type="date" value={this.state.enddate} onChange={this.handleChange} />
                         </label>
                         </div>
                     </fieldset>
@@ -72,7 +63,7 @@ class Experience extends Component {
                     <p>{this.state.startdate}</p>
                     <p>{this.state.enddate}</p>
 
-                </div>
+            </div>
             )    
     }
     }

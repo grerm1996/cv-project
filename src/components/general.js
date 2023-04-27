@@ -9,31 +9,22 @@ class General extends Component {
             name: '',
             email: '',
             phone: '',
-            editing: false,
         }
     };
 
 
     handleChange = (e) => {
         let category = e.target.name;
+        console.log(category)
         this.setState({
             [category]: e.target.value,
         });
     };
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('name: ' + this.state.name);
-        console.log('email: ' + this.state.email);
-        console.log('phone: ' + this.state.phone);
-    };
-
-
-
 
     render() {
 
-        if (this.props.submitted == false || this.state.editing == true) {
+        if (this.props.submitted == false) {
 
         return (
             <form>
@@ -49,7 +40,7 @@ class General extends Component {
 
         )}
 
-        if (this.props.submitted == true && this.state.editing == false) {
+        if (this.props.submitted == true) {
             return (
                 <div className='section'>
                     <h2>{this.state.name}</h2>
