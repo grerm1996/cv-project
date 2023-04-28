@@ -2,8 +2,35 @@ import './App.css';
 import General from './components/general';
 import Education from './components/education';
 import Experience from './components/experience';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
+
+const App = () => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const toggleSubmitted = () => {
+    setSubmitted(!submitted)
+  }
+
+
+return  (
+  <div className="App">
+    < General submitted={submitted}/>
+
+    < Education submitted={submitted}/>
+
+    < Experience submitted={submitted}/>
+
+    <button onClick={toggleSubmitted}>
+      {submitted ? 'Edit' : 'Submit'}
+    </button>
+  </div>
+)
+
+};
+
+
+/* // class-based version is commented out:
 
 class App extends Component {
 
@@ -40,6 +67,6 @@ render() {
       </div>
     );
   }
-};
+}; */
 
 export default App;

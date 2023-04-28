@@ -1,6 +1,65 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Experience extends Component {
+const Experience = (props) => {
+    const [employer, employerSet] = useState('');
+    const [position, positionSet] = useState('');
+    const [duties, dutiesSet] = useState('');
+    const [startdate, startdateSet] = useState('');
+    const [enddate, enddateSet] = useState('');
+
+
+    const handleChange = (e) => {
+        let category = e.target.name;
+        let categorySet = e.target.name + 'Set';
+        let value = e.target.value;
+        eval(categorySet)(value);
+      };
+    
+    if (props.submitted == false) {
+
+        return (
+            <form>
+                <fieldset>
+                <legend>Experience</legend>
+                    <input name='employer' placeholder='Employer name' type="text" value={employer} onChange={handleChange} />
+
+                    <input name='position' placeholder='Position held' type="text" value={position} onChange={handleChange} />
+
+                    <input name='duties' placeholder='Position responsibilities' type="text" value={duties} onChange={handleChange} />
+
+                    <div className='datecontainer'>
+                    <label>
+                    Employment start: 
+                    <input name='startdate' type="date" value={startdate} onChange={handleChange} />
+                    </label>
+
+                    <label>
+                    Employment end: 
+                    <input name='enddate' type="date" value={enddate} onChange={handleChange} />
+                    </label>
+                    </div>
+                </fieldset>
+            </form>
+
+        )}
+
+        if (props.submitted == true) {
+            return (
+                <div className='section'>
+                    <h3>Work Experience</h3>
+                        <p>{employer}</p>
+                        <p>{position}</p>
+                        <p>{duties}</p>
+                        <p>{startdate}</p>
+                        <p>{enddate}</p>
+    
+                </div>
+                )    
+        }
+    }
+
+
+/* class Experience extends Component {
 
     constructor(props) {
         super(props);
@@ -70,6 +129,7 @@ class Experience extends Component {
 
 
 
-}
+}*/
 
 export default Experience;
+ 

@@ -1,6 +1,49 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Education extends Component {
+const Education = (props) => {
+    const [school, schoolSet] = useState('');
+    const [degree, degreeSet] = useState('');
+    const [date, dateSet] = useState('');
+
+    const handleChange = (e) => {
+        let category = e.target.name;
+        let categorySet = e.target.name + 'Set';
+        let value = e.target.value;
+        eval(categorySet)(value);
+      };
+    
+    if (props.submitted == false) {
+
+        return (
+        <form>
+            <fieldset>
+            <legend>Education</legend>
+                <input name='school' placeholder='School name' type="text" value={school} onChange={handleChange} />
+
+                <input name='degree' placeholder='Degree earned' type="text" value={degree} onChange={handleChange} />
+
+                <div className='datecontainer'>
+                <label>
+                Date of degree completion: 
+                <input name='date' placeholder='Date of degree completion' type="date" value={date} onChange={handleChange} />
+                </label>
+                </div>
+            </fieldset>
+        </form>
+        );}
+
+    if (props.submitted == true) {
+        return (
+        <div className='section'>
+            <h3>Education</h3>
+                <p>{degree}</p>
+                <p>{school}</p>
+                <p>Completed {props.submitted}</p>
+            </div>
+        )    
+}}
+
+/* class Education extends Component {
 
     constructor(props) {
         super(props);
@@ -13,7 +56,7 @@ class Education extends Component {
     }
 
     handleChange = (e) => {
-        let category = e.target.name;
+        let category = e.target.name;g
         this.setState({
             [category]: e.target.value,
         });
@@ -59,6 +102,6 @@ class Education extends Component {
 
 
 
-}
+} */
 
 export default Education;

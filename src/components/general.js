@@ -1,6 +1,47 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class General extends Component {
+const General = (props) => {
+    const [name, nameSet] = useState('');
+    const [email, emailSet] = useState('');
+    const [phone, phoneSet] = useState('');
+
+
+    const handleChange = (e) => {
+        let category = e.target.name;
+        let categorySet = e.target.name + 'Set';
+        let value = e.target.value;
+        eval(categorySet)(value);
+      };
+    
+    if (props.submitted == false) {
+
+        return (
+            <form>
+                <fieldset>
+                    <legend>General</legend>
+                    <input name='name' placeholder='Name' type="text" value={name} onChange={handleChange} />
+
+                    <input name='email' placeholder='E-mail address' type="text" value={email} onChange={handleChange} />
+
+                    <input name='phone' placeholder='Phone number' type="text" value={phone} onChange={handleChange} />
+                </fieldset>
+            </form>
+
+        )}
+
+        if (props.submitted == true) {
+            return (
+                <div className='section'>
+                    <h2>{name}</h2>
+                    <p>{email}</p>
+                    <p>{phone}</p>
+                </div>
+            )
+        }
+    }
+
+
+/* class General extends Component {
 
     constructor(props) {
         super(props);
@@ -51,6 +92,6 @@ class General extends Component {
         }
     }
 
-}
+} */
 
 export default General;
